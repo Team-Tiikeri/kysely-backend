@@ -18,7 +18,7 @@ public class Question {
 	private boolean isRequired;
 
 	@ManyToOne
-	@JoinColumn(name = "questionnaire")
+	@JoinColumn(name = "questionnaireId")
 	private Questionnaire questionnaire;
 
 	public Question(String type, String content, boolean isRequired, Questionnaire questionnaire) {
