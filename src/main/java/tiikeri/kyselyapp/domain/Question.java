@@ -21,11 +21,11 @@ public class Question {
 	@JoinColumn(name = "questionnaire")
 	private Questionnaire questionnaire;
 
-	public Question(String type, String content, String isRequired, Questionnaire questionnaire) {
+	public Question(String type, String content, boolean isRequired, Questionnaire questionnaire) {
 		super();
 		this.type = type;
 		this.content = content;
-		this.isRequired = false;
+		this.isRequired = isRequired;
 		this.questionnaire = questionnaire;
 	}
 
