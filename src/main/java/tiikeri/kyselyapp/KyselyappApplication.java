@@ -10,8 +10,13 @@ import tiikeri.kyselyapp.domain.QuestionRepository;
 import tiikeri.kyselyapp.domain.Questionnaire;
 import tiikeri.kyselyapp.domain.QuestionnaireReposiroty;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @SpringBootApplication
 public class KyselyappApplication {
+
+	private static final Logger log = LoggerFactory.getLogger(KyselyappApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(KyselyappApplication.class, args);
