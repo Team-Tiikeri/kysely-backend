@@ -15,19 +15,18 @@ public class Question {
 	private Long id;
 	private String type;
 	private String content;
-	private String compulsion;
+	private boolean isRequired;
 
 	@ManyToOne
 	@JoinColumn(name = "questionnaire")
 	private Questionnaire questionnaire;
 
-	public Question(String type, String content, String compulsion, Questionnaire questionnaire) {
+	public Question(String type, String content, String isRequired, Questionnaire questionnaire) {
 		super();
 		this.type = type;
 		this.content = content;
-		this.compulsion = compulsion;
+		this.isRequired = false;
 		this.questionnaire = questionnaire;
-
 	}
 
 	public Question() {
@@ -66,17 +65,17 @@ public class Question {
 		this.content = content;
 	}
 
-	public String getCompulsion() {
-		return compulsion;
+	public boolean isRequired() {
+		return isRequired;
 	}
 
-	public void setCompulsion(String compulsion) {
-		this.compulsion = compulsion;
+	public void setRequired(boolean isRequired) {
+		this.isRequired = isRequired;
 	}
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", type=" + type + ", content=" + content + ", compulsion=" + compulsion + "]";
+		return "Question [id=" + id + ", type=" + type + ", content=" + content + ", isRequired=" + isRequired + "]";
 	}
 
 }
