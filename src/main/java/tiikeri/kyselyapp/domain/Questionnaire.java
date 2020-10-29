@@ -43,6 +43,14 @@ public class Questionnaire {
 		this.questionnaireId = questionnaireId;
 	}
 
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
 	@Override
 	public String toString() {
 		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title
