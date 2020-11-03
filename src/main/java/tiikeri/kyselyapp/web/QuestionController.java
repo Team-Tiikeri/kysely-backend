@@ -28,7 +28,7 @@ public class QuestionController {
 		return  null;
 	}
 	
-	@RequestMapping("/questionnaires/{id}/newquestion")
+	@RequestMapping("/questionnairelist/{id}/newquestion")
 	public String addQuestion(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("questions", questionRepository.findAll());
 		model.addAttribute("question", new Question());
@@ -36,8 +36,11 @@ public class QuestionController {
 		return "newquestion";
 	}
 	@RequestMapping("/savequestion")
-	public String save(Questionnaire questionnaire, Question question) {
+	public String save(Questionnaire questionnaire, Question question, Model model) {
 		questionRepository.save(question);
-		return "redirect:/newquestion";
+		model.addAttribute("questions", questionRepository.findAll());
+		model.addAttribute("question", new Question());
+		model.addAttribute("questionnaire", questionnaireRepository.findById(questionnaire.getQuestionnaireId()));
+		return "redirect:/questionnairelist/"+ questionnaire.getQuestionnaireId() + "/newquestion";
 	}
 }
