@@ -5,8 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
+import tiikeri.kyselyapp.domain.Questionnaire;
 import tiikeri.kyselyapp.domain.QuestionnaireRepository;
 
 @Controller
@@ -25,4 +28,16 @@ public class QuestionController {
 		return  null;
 	}
 	
+	@RequestMapping("/questionnaires/{id}/newquestion")
+	public String addQuestion(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("questions", questionRepository.findAll());
+		model.addAttribute("question", new Question());
+		model.addAttribute("questionnaire", questionnaireRepository.findById(id));
+		return "newquestion";
+	}
+	@RequestMapping("/savequestion")
+	public String save(Questionnaire questionnaire, Question question) {
+		questionRepository.save(question);
+		return "redirect:/newquestion";
+	}
 }

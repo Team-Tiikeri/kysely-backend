@@ -49,7 +49,7 @@ public class QuestionnaireController {
 		return "questionnaire";
 	}
 	
-	@RequestMapping("/newQuestionnaire")
+	@RequestMapping("/newquestionnaire")
 	public String newQuestionnaire(Model model) {
 		model.addAttribute("questionnaire", new Questionnaire());
 		return "newquestionnaire";

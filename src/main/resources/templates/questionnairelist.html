@@ -20,8 +20,9 @@
 		<tr th:each="questionnaire : ${questionnaires}">
 			<td class="d-none" th:text="${questionnaire.questionnaireId}"></td>
 			<td th:text="${questionnaire.title}"></td>
-			<td><a class="btn btn-primary">Delete tähän</a></td>
-			<td><a class="btn btn-primary">Edit tähän</a></td>
+			<td><a th:href="@{/questionnairelist/{id}/newquestion (id=${questionnaire.questionnaireId})}" class="btn btn-primary">Add question</a></td>
+			<td><a class="btn btn-primary">Delete</a></td>
+			<td><a class="btn btn-primary">Edit</a></td>
 		</tr>
 	</table>
 	<a class="btn btn-success">Add book</a>
