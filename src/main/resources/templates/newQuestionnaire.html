@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Add a new questionnaire</h1>
-	<form th:object="${questionnaire}" th:action="${save}" action="#"
+	<form th:object="${questionnaire}" th:action="@{save}" action="#"
 		method="post">
 	<div>
 		<label for="title">Title: </label><input type="text" id="title"
