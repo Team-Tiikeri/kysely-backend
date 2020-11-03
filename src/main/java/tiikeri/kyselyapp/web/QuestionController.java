@@ -1,5 +1,7 @@
 package tiikeri.kyselyapp.web;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,17 +32,16 @@ public class QuestionController {
 	
 	@RequestMapping("/questionnairelist/{id}/newquestion")
 	public String addQuestion(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("questions", questionRepository.findAll());
-		model.addAttribute("question", new Question());
-		model.addAttribute("questionnaire", questionnaireRepository.findById(id));
+		Question question = new Question();
+		Questionnaire questionnaire = questionnaireRepository.findById(id).orElse(null);
+		question.setQuestionnaire(questionnaire);
+		model.addAttribute("questions", questionRepository.findByQuestionnaire(questionnaire));
+		model.addAttribute("question", question);
 		return "newquestion";
 	}
 	@RequestMapping("/savequestion")
-	public String save(Questionnaire questionnaire, Question question, Model model) {
+	public String save(Question question) {
 		questionRepository.save(question);
-		model.addAttribute("questions", questionRepository.findAll());
-		model.addAttribute("question", new Question());
-		model.addAttribute("questionnaire", questionnaireRepository.findById(questionnaire.getQuestionnaireId()));
-		return "redirect:/questionnairelist/"+ questionnaire.getQuestionnaireId() + "/newquestion";
+		return "redirect:/questionnairelist/"+ question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
 	}
 }
