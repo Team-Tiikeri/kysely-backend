@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Question {
 	@Id
@@ -18,6 +20,7 @@ public class Question {
 	private boolean isRequired;
 
 	@ManyToOne
+	@JsonManagedReference
 	@JoinColumn(name = "questionnaireId")
 	private Questionnaire questionnaire;
 
