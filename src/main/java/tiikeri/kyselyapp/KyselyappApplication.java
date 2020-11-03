@@ -33,14 +33,15 @@ public class KyselyappApplication {
 
 			Questionnaire newQuestionnaire = new Questionnaire("Trivia");
 			questionnaireRepository.save(newQuestionnaire);
-//			
-//			Question question1 = new Question("text", "What is the capital of France?",true, newQuestionnaire);
-//			Question question2 = new Question("text", "How long do bears hibernate?", true, newQuestionnaire);
-//			questionRepository.save(question1);
-//			questionRepository.save(question2);
-//
-//			List<Question> questions = questionRepository.findByType("text");
-//			newQuestionnaire.setQuestions(questions);
+			
+			Question question1 = new Question("text", "What is the capital of France?",true, newQuestionnaire);
+			Question question2 = new Question("text", "How long do bears hibernate?", true, newQuestionnaire);
+			questionRepository.save(question1);
+			questionRepository.save(question2);
+
+			List<Question> questions = questionRepository.findByType("text");
+			newQuestionnaire.setQuestions(questions);
+			System.out.println(newQuestionnaire.toString());
 //
 //			log.info("Fetch all questions");
 //			for (Question question : questionRepository.findAll()) {

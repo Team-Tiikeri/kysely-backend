@@ -23,7 +23,7 @@ public class QuestionnaireController {
 		return "questionnaireList";
 	}
 	
-	@GetMapping("/questionnaire/{id}")
+	@GetMapping("/questionnaires/{id}")
 	public String findById(@PathVariable("id") Long questionnaireId, Model model) {
 		model.addAttribute("questions", questionRepository.findAll());
 		return "questionnaire";
