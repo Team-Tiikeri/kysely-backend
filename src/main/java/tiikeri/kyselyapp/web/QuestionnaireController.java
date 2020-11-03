@@ -8,12 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMapping;
-||||||| 7d94890
-=======
 import org.springframework.web.bind.annotation.ResponseBody;
->>>>>>> 7570ee0c96cc52bfb9c0d76dcb3d3795fa1aa314
+
 
 import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
