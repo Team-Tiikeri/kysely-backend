@@ -51,13 +51,18 @@ public class QuestionnaireController {
 	public String newQuestionnaire(Model model) {
 		model.addAttribute("questionnaire", new Questionnaire());
 		return "newquestionnaire";
-		
 	}
 	
 	@PostMapping("/save")
 	public String saveQuestionnaire(Questionnaire questionnaire) {
 		questionnaireRepository.save(questionnaire);
 		return "redirect:/questionnairelist";
+	}
+	
+	// Documentation for the REST API
+	@GetMapping("/resthome")
+	public String restHomePage() {
+		return "resthome";
 	}
 	
 }
