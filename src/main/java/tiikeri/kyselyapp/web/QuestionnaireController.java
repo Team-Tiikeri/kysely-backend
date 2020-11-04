@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
 import tiikeri.kyselyapp.domain.Questionnaire;
 import tiikeri.kyselyapp.domain.QuestionnaireRepository;
@@ -33,6 +34,12 @@ public class QuestionnaireController {
 	@GetMapping("/questionnaire/{id}")
 	public @ResponseBody Optional<Questionnaire> findQuestionnaireRest(@PathVariable("id") Long questionnaireId) {
 		return questionnaireRepository.findById(questionnaireId);
+	}
+	
+	@GetMapping("/questionnaire/{id}/questions")
+	public @ResponseBody List<Question> findQuestionnaireQuestionsRest(@PathVariable("id") Long questionnaireId) {
+		Questionnaire questionnaire = questionnaireRepository.findById(questionnaireId).orElse(null);
+		return questionRepository.findByQuestionnaire(questionnaire);
 	}
 	
 	@GetMapping("/questionnairelist")
