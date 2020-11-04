@@ -14,7 +14,8 @@
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
-	<pre><code>[
+	<pre>
+		<code>[
   {
     "id": 1,
     "title": "Trivia 1",
@@ -23,20 +24,58 @@
     "id": 2,
     "title": "Trivia 2",
   }
-]</code></pre>
-	<h2>Questionnaire by Id</h2>
+]</code>
+	</pre>
+	<h2>Questionnaire by ID</h2>
 	<p>
 		<strong>GET </strong><strong> /questionnaire/{id} </strong> <strong>
-		<a href="/questionnaire/1">/questionnaire/1</a></strong>
+			<a href="/questionnaire/1">/questionnaire/1</a>
+		</strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
-	<pre><code>
+	<pre>
+		<code>
  {
    "id": 1,
    "title": "Trivia 1",
  }
-</code></pre>
+</code>
+	</pre>
+	<h2>Questionnaire questions by ID</h2>
+	<p>
+		<strong>GET </strong><strong> /questionnaire/{id}/questions </strong>
+		<strong> <a href="/questionnaire/1/questions">/questionnaire/1/questions</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre>
+		<code>
+[
+  {
+    "id": 2,
+    "type": "text",
+    "content": "What is the capital of France?",
+    "questionnaire:" {
+    	"questionnaireId": 1,
+    	"title": "Trivia"
+    },
+    "required": true 
+  },
+  {
+    "id": 3,
+    "type": "text",
+    "content": "How long do bears hibernate?",
+    "questionnaire:" {
+    	"questionnaireId": 1,
+    	"title": "Trivia"
+    },
+    "required": true 
+  },
+]
+		</code>
+	</pre>
 
 </body>
