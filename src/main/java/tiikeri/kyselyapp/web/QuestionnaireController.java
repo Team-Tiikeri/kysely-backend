@@ -25,18 +25,19 @@ public class QuestionnaireController {
 	private QuestionnaireRepository questionnaireRepository;
 	
 	//RESTful to get all questionnaires
-	@GetMapping("/questionnaires")
+	@GetMapping("api/questionnaires")
 	public @ResponseBody List<Questionnaire> questionnairesListRest() {
 		return (List<Questionnaire>)questionnaireRepository.findAll();
 	}
 	
-	//RESTful to get questionnaire with id
-	@GetMapping("/questionnaire/{id}")
+	//RESTful to get questionnaire by id
+	@GetMapping("api/questionnaires/{id}")
 	public @ResponseBody Optional<Questionnaire> findQuestionnaireRest(@PathVariable("id") Long questionnaireId) {
 		return questionnaireRepository.findById(questionnaireId);
 	}
 	
-	@GetMapping("/questionnaire/{id}/questions")
+	//RESTful to get questionnaires questions by id
+	@GetMapping("api/questionnaires/{id}/questions")
 	public @ResponseBody List<Question> findQuestionnaireQuestionsRest(@PathVariable("id") Long questionnaireId) {
 		Questionnaire questionnaire = questionnaireRepository.findById(questionnaireId).orElse(null);
 		return questionRepository.findByQuestionnaire(questionnaire);
@@ -48,7 +49,7 @@ public class QuestionnaireController {
 		return "questionnairelist";
 	}
 	
-	@GetMapping("/questionnaires/{id}")
+	@GetMapping("/questionnairelist/{id}")
 	public String findById(@PathVariable("id") Long questionnaireId, Model model) {
 		model.addAttribute("questions", questionRepository.findAll());
 		return "questionnaire";

@@ -9,27 +9,28 @@
 	<h2>All Questionnaires</h2>
 	<p>
 		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/questionnaires">/questionnaires</a></strong>
+			href="api/questionnaires">api/questionnaires</a></strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
 	<pre>
-		<code>[
+		<code>
+[
   {
-    "id": 1,
+    "questionnaireId": 1,
     "title": "Trivia 1",
   },
   {
-    "id": 2,
+    "questionnaireId": 2,
     "title": "Trivia 2",
   }
 ]</code>
 	</pre>
 	<h2>Questionnaire by ID</h2>
 	<p>
-		<strong>GET </strong><strong> /questionnaire/{id} </strong> <strong>
-			<a href="/questionnaire/1">/questionnaire/1</a>
+		<strong>GET </strong><strong> api/questionnaires/{id} </strong> <strong>
+			<a href="api/questionnaires/1">api/questionnaires/1</a>
 		</strong>
 	</p>
 	<p>
@@ -38,15 +39,15 @@
 	<pre>
 		<code>
  {
-   "id": 1,
+   "questionnaireId": 1,
    "title": "Trivia 1",
  }
 </code>
 	</pre>
 	<h2>Questionnaire questions by ID</h2>
 	<p>
-		<strong>GET </strong><strong> /questionnaire/{id}/questions </strong>
-		<strong> <a href="/questionnaire/1/questions">/questionnaire/1/questions</a></strong>
+		<strong>GET </strong><strong> api/questionnaires/{id}/questions </strong>
+		<strong> <a href="api/questionnaires/1/questions">api/questionnaires/1/questions</a></strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
