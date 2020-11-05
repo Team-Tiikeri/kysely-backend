@@ -13,40 +13,45 @@
 	<h1>Add a new question</h1>
 	<form th:object="${question}" th:action="@{/savequestion}" action="#"
 		method="post">
-		<input type="hidden" th:field="${question.questionnaire.questionnaireId}" class="form-control"/>
+		<input type="hidden"
+			th:field="${question.questionnaire.questionnaireId}"
+			class="form-control" />
 		<div>
-			<label for="type">Type: </label><input type="text" id="type"
-				th:field="*{type}" />
+			
 				
 			<label for="content">Add question: </label><input type="text" id="content"
 				th:field="*{content}" />
 				
-<!-- 			<label for="isRequired">Is this required?</label> -->
-<!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
-<!-- 					th:checked="*{isRequired}"/>Yes</label> -->
-					
-<!-- 				<label><input type="radio" name="isRequired" id="isRequired2" value="false" -->
-<!-- 					th:checked="*{isRequired} == false"/>No</label> -->
+				<label for="type">Type: </label><input type="text" id="type"
+				th:field="*{type}" />
 
-			
-				
-			
-				
-			
+			<!-- 			<label for="isRequired">Is this required?</label> -->
+			<!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
+			<!-- 					th:checked="*{isRequired}"/>Yes</label> -->
+
+			<!-- 				<label><input type="radio" name="isRequired" id="isRequired2" value="false" -->
+			<!-- 					th:checked="*{isRequired} == false"/>No</label> -->
+
+
+
+
+
+
 		</div>
 		<input type="submit" class="btn btn-primary" value="Save Question" />
 	</form>
-	
+
 	<table class="table table-striped">
 		<tr>
 			<th>Type</th>
 			<th>Add question</th>
 		</tr>
-		<tr th:each = "question : ${questions}">
-			<td  th:text="${question.type}"></td>
-			<td  th:text="${question.content}"></td>
+		<tr th:each="question : ${questions}">
+			<td th:text="${question.type}"></td>
+			<td th:text="${question.content}"></td>
 		</tr>
 	</table>
-<a href="/questionnairelist" class="btn btn-primary">Back to questionnaires</a>
+	<a href="/questionnairelist" class="btn btn-primary">Back to
+		questionnaires</a>
 </body>
 </html>
