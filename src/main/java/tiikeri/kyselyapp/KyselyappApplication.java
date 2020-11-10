@@ -31,7 +31,7 @@ public class KyselyappApplication {
 			QuestionnaireRepository questionnaireRepository) {
 		return (args) -> {
 
-			Questionnaire newQuestionnaire = new Questionnaire("Trivia");
+			Questionnaire newQuestionnaire = new Questionnaire("Trivia", "kinkkinen kysely");
 			questionnaireRepository.save(newQuestionnaire);
 			
 			Question question1 = new Question("text", "What is the capital of France?",true, newQuestionnaire);
