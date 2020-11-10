@@ -14,12 +14,15 @@
 		<tr>
 			<th class="d-none">ID</th>
 			<th>Kyselyt</th>
+			<th>Kuvaus</th>
+			<th></th>
 			<th></th>
 			<th></th>
 		</tr>
 		<tr th:each="questionnaire : ${questionnaires}">
 			<td class="d-none" th:text="${questionnaire.questionnaireId}"></td>
 			<td th:text="${questionnaire.title}"></td>
+			<td th:text="${questionnaire.description}"></td>
 			<td><a th:href="@{/questionnairelist/{id}/newquestion (id=${questionnaire.questionnaireId})}" class="btn btn-primary">Add question</a></td>
 			<td><a class="btn btn-primary">Delete</a></td>
 			<td><a class="btn btn-primary">Edit</a></td>

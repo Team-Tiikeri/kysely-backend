@@ -16,18 +16,28 @@ public class Questionnaire {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long questionnaireId;
 	private String title;
+	private String description;
 
 	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionnaire")
 	private List<Question> questions;
 
-	public Questionnaire(String title) {
+	public Questionnaire(String title, String description) {
 		super();
 		this.title = title;
+		this.description = description;
 	}
 
 	public Questionnaire() {
 
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getTitle() {
@@ -56,8 +66,10 @@ public class Questionnaire {
 
 	@Override
 	public String toString() {
-		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title
+		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title + ", description=" + description
 				+ ", questions=" + questions + "]";
 	}
+
+	
 
 }
