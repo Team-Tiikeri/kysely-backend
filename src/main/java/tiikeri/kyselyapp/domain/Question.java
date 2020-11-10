@@ -66,11 +66,11 @@ public class Question {
 		this.content = content;
 	}
 
-	public boolean isRequired() {
+	public boolean getIsRequired() {
 		return isRequired;
 	}
 
-	public void setRequired(boolean isRequired) {
+	public void setIsRequired(boolean isRequired) {
 		this.isRequired = isRequired;
 	}
 
