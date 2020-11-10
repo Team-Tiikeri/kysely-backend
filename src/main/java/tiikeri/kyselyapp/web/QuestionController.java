@@ -1,6 +1,9 @@
 package tiikeri.kyselyapp.web;
 
+import java.util.List;
 import java.util.Optional;
+
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
@@ -25,8 +29,7 @@ public class QuestionController {
 	@Autowired 
 	private QuestionnaireRepository questionnaireRepository;
 	
-	
-	@GetMapping("/question/{id}/")
+	@GetMapping("/question/{id}")
 	public String findById(@PathVariable("id") Long questionnaireId, Model model) {
 		model.addAttribute("question", questionRepository.findById(questionnaireId));
 		return  null;
@@ -45,5 +48,17 @@ public class QuestionController {
 	public String save(Question question) {
 		questionRepository.save(question);
 		return "redirect:/questionnairelist/"+ question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
+	}
+
+	// REST Endpoints
+
+	@GetMapping("/api/questions")
+	public @ResponseBody List<Question> getQuestions() {
+		return (List<Question>) questionRepository.findAll();
+	}
+
+	@GetMapping("/api/questions/{id}")
+	public @ResponseBody Question getQuestionsById(@PathVariable("id") long questionId) {
+		return questionRepository.findById(questionId).orElse(null);
 	}
 }

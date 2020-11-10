@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+
 @Entity
 public class Answer {
 
@@ -14,7 +17,9 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long answerId;
     private String content;
+
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "questionId")
     private Question question;
 

@@ -7,7 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-
+import tiikeri.kyselyapp.domain.Answer;
+import tiikeri.kyselyapp.domain.AnswerRepository;
 import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
 import tiikeri.kyselyapp.domain.Questionnaire;
@@ -28,7 +29,7 @@ public class KyselyappApplication {
 
 	@Bean
 	public static CommandLineRunner demo(QuestionRepository questionRepository,
-			QuestionnaireRepository questionnaireRepository) {
+			QuestionnaireRepository questionnaireRepository, AnswerRepository answerRepository) {
 		return (args) -> {
 
 			Questionnaire newQuestionnaire = new Questionnaire("Trivia", "kinkkinen kysely");
@@ -46,6 +47,9 @@ public class KyselyappApplication {
 			questionRepository.save(question3);
 			questionRepository.save(question4);
 			questionRepository.save(question5);
+
+			Answer answer1 = new Answer("Paris", question1);
+			answerRepository.save(answer1);
 
 			List<Question> questions = questionRepository.findByType("text");
 			newQuestionnaire.setQuestions(questions);

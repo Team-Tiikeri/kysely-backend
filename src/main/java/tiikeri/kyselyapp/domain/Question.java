@@ -2,6 +2,7 @@ package tiikeri.kyselyapp.domain;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -26,10 +28,9 @@ public class Question {
 	@JoinColumn(name = "questionnaireId")
 	private Questionnaire questionnaire;
 
-	@OneToMany
-	@JsonManagedReference
-	@JoinColumn(name = "questionId")
-	List<Answer> answers;
+	@JsonBackReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+	private List<Answer> answers;
 
 	public Question(String type, String content, boolean isRequired, Questionnaire questionnaire) {
 		super();
@@ -80,6 +81,14 @@ public class Question {
 
 	public void setQuestionnaire(Questionnaire questionnaire) {
 		this.questionnaire = questionnaire;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 
 	@Override
