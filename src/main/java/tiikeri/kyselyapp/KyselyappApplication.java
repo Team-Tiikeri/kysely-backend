@@ -41,7 +41,7 @@ public class KyselyappApplication {
 
 			List<Question> questions = questionRepository.findByType("text");
 			newQuestionnaire.setQuestions(questions);
-			System.out.println(newQuestionnaire.toString());
+//			System.out.println(newQuestionnaire.toString());
 //
 //			log.info("Fetch all questions");
 //			for (Question question : questionRepository.findAll()) {

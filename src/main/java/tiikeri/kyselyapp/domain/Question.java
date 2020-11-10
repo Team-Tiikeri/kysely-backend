@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long questionId;
 	private String type;
 	private String content;
 	private boolean isRequired;
@@ -36,20 +36,12 @@ public class Question {
 
 	}
 
-	public Questionnaire getQuestionnaire() {
-		return questionnaire;
+	public Long getQuestionId() {
+		return questionId;
 	}
 
-	public void setQuestionnaire(Questionnaire questionnaire) {
-		this.questionnaire = questionnaire;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setQuestionId(Long questionId) {
+		this.questionId = questionId;
 	}
 
 	public String getType() {
@@ -76,9 +68,22 @@ public class Question {
 		this.isRequired = isRequired;
 	}
 
+	public Questionnaire getQuestionnaire() {
+		return questionnaire;
+	}
+
+	public void setQuestionnaire(Questionnaire questionnaire) {
+		this.questionnaire = questionnaire;
+	}
+
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", type=" + type + ", content=" + content + ", isRequired=" + isRequired + "]";
+		return "Question [type=" + type + ", content=" + content + ", isRequired=" + isRequired + ", questionnaire="
+				+ questionnaire + "]";
 	}
+
+	
+
+	
 
 }
