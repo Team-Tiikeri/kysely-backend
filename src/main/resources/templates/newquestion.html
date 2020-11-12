@@ -10,16 +10,33 @@
 	crossorigin="anonymous">
 </head>
 <body>
+<<<<<<< HEAD
 	<h2>Add a new question</h2>
+=======
+	<h1 th:text="${question.questionnaire.title}"></h1>
+	
+>>>>>>> 549cfd53446010a89e54a4a854d9162edd9247cd
 	<form th:object="${question}" th:action="@{/savequestion}" action="#"
 		method="post">
 		<input type="hidden"
 			th:field="${question.questionnaire.questionnaireId}"
 			class="form-control" />
 		<div>
+<<<<<<< HEAD
 			<label for="content">Questions: </label><input type="text"
 				id="content" th:field="*{content}" /> <label for="type">Type:
 			</label><input type="text" id="type" th:field="*{type}" />
+=======
+			
+			<div>	
+				<label for="content">Add question: </label><input type="text" id="content"
+					th:field="*{content}" />
+			</div>	
+			<div>
+				<label for="type">Type: </label><input type="text" id="type"
+					th:field="*{type}" />
+			</div>	
+>>>>>>> 549cfd53446010a89e54a4a854d9162edd9247cd
 
 			<!-- 			<label for="isRequired">Is this required?</label> -->
 			<!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
