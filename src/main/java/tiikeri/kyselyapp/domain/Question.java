@@ -11,8 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Question {
@@ -23,12 +22,14 @@ public class Question {
 	private String content;
 	private boolean isRequired;
 
+	/* @JsonManagedReference */
 	@ManyToOne
-	@JsonManagedReference
+	@JsonIgnoreProperties("questions")
 	@JoinColumn(name = "questionnaireId")
 	private Questionnaire questionnaire;
 
-	@JsonBackReference
+	/* @JsonBackReference */
+	@JsonIgnoreProperties("question")
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Answer> answers;
 

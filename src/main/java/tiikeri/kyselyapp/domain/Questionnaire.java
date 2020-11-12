@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Questionnaire {
@@ -18,7 +18,8 @@ public class Questionnaire {
 	private String title;
 	private String description;
 
-	@JsonBackReference
+	/* @JsonBackReference */
+	@JsonIgnoreProperties("questionnaire")
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionnaire")
 	private List<Question> questions;
 
@@ -66,8 +67,7 @@ public class Questionnaire {
 
 	@Override
 	public String toString() {
-		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title + ", description=" + description
-				+ ", questions=" + questions + "]";
+		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title + ", description=" + description + "]";
 	}
 
 	

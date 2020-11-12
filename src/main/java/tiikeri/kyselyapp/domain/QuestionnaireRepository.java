@@ -1,12 +1,10 @@
 package tiikeri.kyselyapp.domain;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
 public interface QuestionnaireRepository extends CrudRepository<Questionnaire, Long>{
 	
 	public List<Questionnaire> findByTitle(String title);
-	public Optional<Questionnaire> findById(Long questionId);
 }

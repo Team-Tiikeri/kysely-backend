@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
@@ -19,7 +20,8 @@ public class Answer {
     private String content;
 
     @ManyToOne
-    @JsonManagedReference
+    @JsonIgnoreProperties("answers")
+    /* @JsonManagedReference */
     @JoinColumn(name = "questionId")
     private Question question;
 
