@@ -9,51 +9,50 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
 public class Answer {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long answerId;
-    private String content;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long answerId;
+	private String content;
 
-    @ManyToOne
-    @JsonIgnoreProperties("answers")
-    /* @JsonManagedReference */
-    @JoinColumn(name = "questionId")
-    private Question question;
+	@ManyToOne
+	@JsonIgnoreProperties("answers")
+	/* @JsonManagedReference */
+	@JoinColumn(name = "questionId")
+	private Question question;
 
-    public Answer() {
-    }
+	public Answer() {
+	}
 
-    public Answer(String content, Question question) {
-        this.content = content;
-        this.question = question;
-    }
+	public Answer(String content, Question question) {
+		this.content = content;
+		this.question = question;
+	}
 
-    public Long getAnswerId() {
-        return answerId;
-    }
+	public Long getAnswerId() {
+		return answerId;
+	}
 
-    public void setAnswerId(Long answerId) {
-        this.answerId = answerId;
-    }
+	public void setAnswerId(Long answerId) {
+		this.answerId = answerId;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    public Question getQuestion() {
-        return question;
-    }
+	public Question getQuestion() {
+		return question;
+	}
 
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 
 }

@@ -67,9 +67,8 @@ public class Questionnaire {
 
 	@Override
 	public String toString() {
-		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title + ", description=" + description + "]";
+		return "Questionnaire [questionnaireId=" + questionnaireId + ", title=" + title + ", description=" + description
+				+ "]";
 	}
-
-	
 
 }

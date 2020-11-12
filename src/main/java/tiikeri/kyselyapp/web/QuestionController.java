@@ -19,19 +19,19 @@ import tiikeri.kyselyapp.domain.QuestionnaireRepository;
 @CrossOrigin
 @Controller
 public class QuestionController {
-	
+
 	@Autowired
 	private QuestionRepository questionRepository;
-	
-	@Autowired 
+
+	@Autowired
 	private QuestionnaireRepository questionnaireRepository;
-	
+
 	@GetMapping("/question/{id}")
 	public String findById(@PathVariable("id") Long questionnaireId, Model model) {
 		model.addAttribute("question", questionRepository.findById(questionnaireId));
-		return  null;
+		return null;
 	}
-	
+
 	@RequestMapping("/questionnairelist/{id}/newquestion")
 	public String addQuestion(@PathVariable("id") Long id, Model model) {
 		Question question = new Question();
@@ -41,10 +41,11 @@ public class QuestionController {
 		model.addAttribute("question", question);
 		return "newquestion";
 	}
+
 	@RequestMapping("/savequestion")
 	public String save(Question question) {
 		questionRepository.save(question);
-		return "redirect:/questionnairelist/"+ question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
+		return "redirect:/questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
 	}
 
 	// REST Endpoints
