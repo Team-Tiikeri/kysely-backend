@@ -91,17 +91,17 @@ public class KyselyappApplication {
 
 			List<Question> questions3 = questionRepository.findByType("text");
 			newQuestionnaire3.setQuestions(questions3);
-//			System.out.println(newQuestionnaire.toString());
-//
-//			log.info("Fetch all questions");
-//			for (Question question : questionRepository.findAll()) {
-//				log.info(question.toString());
-//			}
-//			
-//			log.info("Fetch all questionaires");
-//			for (Questionnaire questionnaire : questionnaireRepository.findAll()) {
-//				log.info(questionnaire.toString());
-//			}
+			System.out.println(newQuestionnaire.toString());
+
+			log.info("Fetch all questions");
+			for (Question question : questionRepository.findAll()) {
+				log.info(question.toString());
+			}
+			
+			log.info("Fetch all questionnaires");
+			for (Questionnaire questionnaire : questionnaireRepository.findAll()) {
+				log.info(questionnaire.toString());
+			}
 
 		};
 	}
