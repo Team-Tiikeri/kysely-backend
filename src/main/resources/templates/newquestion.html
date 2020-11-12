@@ -10,7 +10,8 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<h1>Add a new question</h1>
+	<h1 th:text="${question.questionnaire.title}"></h1>
+	
 	<form th:object="${question}" th:action="@{/savequestion}" action="#"
 		method="post">
 		<input type="hidden"
@@ -18,12 +19,14 @@
 			class="form-control" />
 		<div>
 			
-				
-			<label for="content">Add question: </label><input type="text" id="content"
-				th:field="*{content}" />
-				
+			<div>	
+				<label for="content">Add question: </label><input type="text" id="content"
+					th:field="*{content}" />
+			</div>	
+			<div>
 				<label for="type">Type: </label><input type="text" id="type"
-				th:field="*{type}" />
+					th:field="*{type}" />
+			</div>	
 
 			<!-- 			<label for="isRequired">Is this required?</label> -->
 			<!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
