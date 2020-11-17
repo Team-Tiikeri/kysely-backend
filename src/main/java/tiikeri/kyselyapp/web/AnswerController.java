@@ -1,5 +1,7 @@
 package tiikeri.kyselyapp.web;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tiikeri.kyselyapp.domain.Answer;
@@ -37,7 +40,14 @@ public class AnswerController {
 	}
 
 	@PostMapping(value = "/api/answers")
-	public Answer saveAnswer(@RequestBody Answer request) {
-		return answerRepository.save(request);
+	public List<Answer> saveAnswer(@RequestBody List<Answer> answers) {	
+		List<Answer> savedAnswers = new ArrayList<Answer>();
+		for (int i = 0; i < answers.size(); i++) {
+			Question question = questionRepository.findById(answers.get(i).getQuestion().getQuestionId()).orElse(null);
+			Answer answer = new Answer(answers.get(i).getContent(), question);
+			answerRepository.save(answer);
+			savedAnswers.add(answer);
+		}
+		return savedAnswers;
 	}
 }
