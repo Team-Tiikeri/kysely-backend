@@ -21,6 +21,7 @@ public class Question {
 	private String type;
 	private String content;
 	private boolean isRequired;
+	private List<String> options;
 
 	/* @JsonManagedReference */
 	@ManyToOne
@@ -33,7 +34,7 @@ public class Question {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Answer> answers;
 
-	public Question(String type, String content, boolean isRequired, Questionnaire questionnaire) {
+	public Question(String type, String content, boolean isRequired, List<String> options, Questionnaire questionnaire) {
 		super();
 		this.type = type;
 		this.content = content;
@@ -42,6 +43,14 @@ public class Question {
 	}
 
 	public Question() {
+	}
+
+	public List<String> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<String> options) {
+		this.options = options;
 	}
 
 	public Long getQuestionId() {
@@ -92,10 +101,6 @@ public class Question {
 		this.answers = answers;
 	}
 
-	@Override
-	public String toString() {
-		return "Question [type=" + type + ", content=" + content + ", isRequired=" + isRequired + ", questionnaire="
-				+ questionnaire + "]";
-	}
+	
 
 }
