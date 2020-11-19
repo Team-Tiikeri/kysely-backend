@@ -18,10 +18,10 @@ public class Question {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long questionId;
-	private String type;
+	private QuestionType type;
 	private String content;
 	private boolean isRequired;
-	private List<String> options;
+	//private List<String> options;
 
 	/* @JsonManagedReference */
 	@ManyToOne
@@ -34,24 +34,25 @@ public class Question {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Answer> answers;
 
-	public Question(String type, String content, boolean isRequired, List<String> options, Questionnaire questionnaire) {
+	public Question(QuestionType type, String content, boolean isRequired, Questionnaire questionnaire) {
 		super();
 		this.type = type;
 		this.content = content;
 		this.isRequired = isRequired;
+		//this.options = options;
 		this.questionnaire = questionnaire;
 	}
 
 	public Question() {
 	}
 
-	public List<String> getOptions() {
-		return options;
-	}
+//	public List<String> getOptions() {
+//		return options;
+//	}
 
-	public void setOptions(List<String> options) {
-		this.options = options;
-	}
+//	public void setOptions(List<String> options) {
+//		this.options = options;
+//	}
 
 	public Long getQuestionId() {
 		return questionId;
@@ -61,11 +62,11 @@ public class Question {
 		this.questionId = questionId;
 	}
 
-	public String getType() {
+	public QuestionType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(QuestionType type) {
 		this.type = type;
 	}
 

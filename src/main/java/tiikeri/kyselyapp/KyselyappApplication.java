@@ -11,6 +11,7 @@ import tiikeri.kyselyapp.domain.Answer;
 import tiikeri.kyselyapp.domain.AnswerRepository;
 import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
+import tiikeri.kyselyapp.domain.QuestionType;
 import tiikeri.kyselyapp.domain.Questionnaire;
 
 import tiikeri.kyselyapp.domain.QuestionnaireRepository;
@@ -41,26 +42,23 @@ public class KyselyappApplication {
 			questionnaireRepository.save(newQuestionnaire3);
 
 			// Kysymyksien lisääminen itse kyselyihin
-			Question question1 = new Question("text", "What is the capital of France?", true, newQuestionnaire);
-			Question question2 = new Question("text", "How long do bears hibernate?", true, newQuestionnaire);
-			Question question3 = new Question("text", "Which country invented tea?", true, newQuestionnaire);
-			Question question4 = new Question("text", "Which organ has four chambers?", true, newQuestionnaire);
-			Question question5 = new Question("text", "Which country did AC/DC originate in?", true, newQuestionnaire);
+			Question question1 = new Question(QuestionType.TEXT, "What is the capital of France?", true,  newQuestionnaire);
+			Question question2 = new Question(QuestionType.TEXT, "How long do bears hibernate?", true,  newQuestionnaire);
+			Question question3 = new Question(QuestionType.TEXT, "Which country invented tea?", true, newQuestionnaire);
+			Question question4 = new Question(QuestionType.TEXT, "Which organ has four chambers?", true, newQuestionnaire);
+			Question question5 = new Question(QuestionType.TEXT, "Which country did AC/DC originate in?", true,  newQuestionnaire);
+			
 			questionRepository.save(question1);
 			questionRepository.save(question2);
 			questionRepository.save(question3);
 			questionRepository.save(question4);
 			questionRepository.save(question5);
 
-			Question question6 = new Question("text", "Milloin Haaga-Helia aloitti toimintansa?", true,
-					newQuestionnaire3);
-			Question question7 = new Question("text", "Mikä on Haaga-Helian motto?", true, newQuestionnaire3);
-			Question question8 = new Question("text",
-					"Mitä Haaga-Heliassa voi opiskella? (Anna vähitään kaksi eri koulutusvaihtoehtoa)", true,
-					newQuestionnaire3);
-			Question question9 = new Question("text", "Mikä on Haaga-Helian opiskelijakunnan nimi?", true,
-					newQuestionnaire3);
-			Question question10 = new Question("text", "Kuka on Haaga-Helian rehtori?", true, newQuestionnaire3);
+			Question question6 = new Question(QuestionType.RADIOBUTTON, "Milloin Haaga-Helia aloitti toimintansa?", true,  newQuestionnaire3);
+			Question question7 = new Question(QuestionType.CHECKBOX, "Mikä on Haaga-Helian motto?", true,  newQuestionnaire3);
+			Question question8 = new Question(QuestionType.TEXT,"Mitä Haaga-Heliassa voi opiskella? (Anna vähitään kaksi eri koulutusvaihtoehtoa)", true,  newQuestionnaire3);
+			Question question9 = new Question(QuestionType.TEXT, "Mikä on Haaga-Helian opiskelijakunnan nimi?", true,  newQuestionnaire3);
+			Question question10 = new Question(QuestionType.TEXT, "Kuka on Haaga-Helian rehtori?", true,  newQuestionnaire3);
 			questionRepository.save(question6);
 			questionRepository.save(question7);
 			questionRepository.save(question8);
@@ -83,13 +81,13 @@ public class KyselyappApplication {
 			answerRepository.save(answer6);
 
 			// Listaus kyselyiden kysymyksille
-			List<Question> questions1 = questionRepository.findByType("text");
+			List<Question> questions1 = questionRepository.findByType(QuestionType.TEXT);
 			newQuestionnaire.setQuestions(questions1);
 
-			List<Question> questions2 = questionRepository.findByType("text");
+			List<Question> questions2 = questionRepository.findByType(QuestionType.TEXT);
 			newQuestionnaire2.setQuestions(questions2);
 
-			List<Question> questions3 = questionRepository.findByType("text");
+			List<Question> questions3 = questionRepository.findByType(QuestionType.TEXT);
 			newQuestionnaire3.setQuestions(questions3);
 			System.out.println(newQuestionnaire.toString());
 
@@ -97,7 +95,7 @@ public class KyselyappApplication {
 			for (Question question : questionRepository.findAll()) {
 				log.info(question.toString());
 			}
-			
+
 			log.info("Fetch all questionnaires");
 			for (Questionnaire questionnaire : questionnaireRepository.findAll()) {
 				log.info(questionnaire.toString());
