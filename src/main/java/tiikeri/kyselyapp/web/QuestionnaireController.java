@@ -75,4 +75,11 @@ public class QuestionnaireController {
 		return "resthome";
 	}
 
+	// Delete questionnaire
+	@GetMapping("/deletequestionnaire/{id}")
+	public String deleteQuestionnaire(@PathVariable("id") Long questionnaireId) {
+		questionnaireRepository.deleteById(questionnaireId);
+		return "redirect:../questionnairelist";
+	}
+
 }

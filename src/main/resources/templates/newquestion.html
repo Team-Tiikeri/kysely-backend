@@ -12,7 +12,7 @@
 <body>
 
 	<h1 th:text="${question.questionnaire.title}"></h1>
-	
+
 	<form th:object="${question}" th:action="@{/savequestion}" action="#"
 		method="post">
 		<input type="hidden"
@@ -20,14 +20,14 @@
 			class="form-control" />
 		<div>
 
-			<div>	
-				<label for="content">Add question: </label><input type="text" id="content"
-					th:field="*{content}" />
-			</div>	
+			<div>
+				<label for="content">Add question: </label><input type="text"
+					id="content" th:field="*{content}" />
+			</div>
 			<div>
 				<label for="type">Type: </label><input type="text" id="type"
 					th:field="*{type}" />
-			</div>	
+			</div>
 
 			<!-- 			<label for="isRequired">Is this required?</label> -->
 			<!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
@@ -47,11 +47,13 @@
 		<tr th:each="question : ${questions}">
 			<td th:text="${question.content}"></td>
 			<td th:text="${question.type}"></td>
-			
-			<td><a th:href="@{/deletequestion/{id}(id=${question.questionId})}" class="btn btn-xs btn-danger">Delete</a></td>
+
+			<td><a
+				th:href="@{/deletequestion/{id}(id=${question.questionId})}"
+				class="btn btn-xs btn-danger">Delete</a></td>
 		</tr>
 	</table>
-	
+
 	<a href="/questionnairelist" class="btn btn-primary">Back to
 		questionnaires</a>
 </body>

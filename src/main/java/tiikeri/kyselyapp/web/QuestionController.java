@@ -47,11 +47,11 @@ public class QuestionController {
 		questionRepository.save(question);
 		return "redirect:/questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
 	}
-	
-	//Delete question
+
+	// Delete question
 	@GetMapping("/deletequestion/{id}")
 	public String deleteQuestion(@PathVariable("id") Long questionId) {
-		//Create a new question so that we can use questionnaireid in redirect
+		// Create a new question so that we can use questionnaireid in redirect
 		Question question = questionRepository.findById(questionId).orElse(null);
 		questionRepository.deleteById(questionId);
 		return "redirect:../questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
@@ -68,6 +68,5 @@ public class QuestionController {
 	public @ResponseBody Question getQuestionsById(@PathVariable("id") long questionId) {
 		return questionRepository.findById(questionId).orElse(null);
 	}
-	
-	
+
 }
