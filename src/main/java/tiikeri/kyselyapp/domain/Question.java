@@ -21,7 +21,7 @@ public class Question {
 	private QuestionType type;
 	private String content;
 	private boolean isRequired;
-	//private List<String> options;
+	
 
 	/* @JsonManagedReference */
 	@ManyToOne
@@ -33,26 +33,35 @@ public class Question {
 	@JsonIgnoreProperties("question")
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
 	private List<Answer> answers;
+	@JsonIgnoreProperties("question")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+	private List<Option> options;
 
+	
+	//constructor with parameters
 	public Question(QuestionType type, String content, boolean isRequired, Questionnaire questionnaire) {
 		super();
 		this.type = type;
 		this.content = content;
 		this.isRequired = isRequired;
-		//this.options = options;
 		this.questionnaire = questionnaire;
 	}
 
+	//constructor without parameters
 	public Question() {
 	}
+	
+	//getters and setters
+	public List<Option> getOptions() {
+		return options;
+	}
 
-//	public List<String> getOptions() {
-//		return options;
-//	}
+	public void setOptions(List<Option> options) {
+		this.options = options;
+	}
 
-//	public void setOptions(List<String> options) {
-//		this.options = options;
-//	}
+	
+
 
 	public Long getQuestionId() {
 		return questionId;

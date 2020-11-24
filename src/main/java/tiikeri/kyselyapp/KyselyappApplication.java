@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import tiikeri.kyselyapp.domain.Answer;
 import tiikeri.kyselyapp.domain.AnswerRepository;
+import tiikeri.kyselyapp.domain.Option;
+import tiikeri.kyselyapp.domain.OptionRepository;
 import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
 import tiikeri.kyselyapp.domain.QuestionType;
@@ -16,6 +18,7 @@ import tiikeri.kyselyapp.domain.Questionnaire;
 
 import tiikeri.kyselyapp.domain.QuestionnaireRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -29,9 +32,9 @@ public class KyselyappApplication {
 
 	@Bean
 	public static CommandLineRunner demo(QuestionRepository questionRepository,
-			QuestionnaireRepository questionnaireRepository, AnswerRepository answerRepository) {
+			QuestionnaireRepository questionnaireRepository, AnswerRepository answerRepository, OptionRepository optionRepository) {
 		return (args) -> {
-
+			
 			// Valmiiden kyselyiden luominen, joilla voidaan testailla toiminnallisuuksia
 			Questionnaire newQuestionnaire = new Questionnaire("Trivia", "kinkkinen kysely");
 			Questionnaire newQuestionnaire2 = new Questionnaire("Health", "Are you sick?");
@@ -40,20 +43,30 @@ public class KyselyappApplication {
 			questionnaireRepository.save(newQuestionnaire);
 			questionnaireRepository.save(newQuestionnaire2);
 			questionnaireRepository.save(newQuestionnaire3);
-
+			
+		
+			
 			// Kysymyksien lisääminen itse kyselyihin
-			Question question1 = new Question(QuestionType.TEXT, "What is the capital of France?", true,  newQuestionnaire);
-			Question question2 = new Question(QuestionType.TEXT, "How long do bears hibernate?", true,  newQuestionnaire);
+			Question question1 = new Question(QuestionType.RADIOBUTTON, "What is the capital of France?", true, newQuestionnaire);
+			Question question2 = new Question(QuestionType.TEXT, "How long do bears hibernate?", true, newQuestionnaire);
 			Question question3 = new Question(QuestionType.TEXT, "Which country invented tea?", true, newQuestionnaire);
 			Question question4 = new Question(QuestionType.TEXT, "Which organ has four chambers?", true, newQuestionnaire);
-			Question question5 = new Question(QuestionType.TEXT, "Which country did AC/DC originate in?", true,  newQuestionnaire);
+			Question question5 = new Question(QuestionType.TEXT, "Which country did AC/DC originate in?", true, newQuestionnaire);
 			
 			questionRepository.save(question1);
 			questionRepository.save(question2);
 			questionRepository.save(question3);
 			questionRepository.save(question4);
 			questionRepository.save(question5);
-
+			
+			Option option1 = new Option("kinkkukiusaus", question1);
+			Option option2 = new Option("makaronilaatikko", question1);
+			Option option3 = new Option("lasagne", question1);
+			
+			optionRepository.save(option1);
+			optionRepository.save(option2);
+			optionRepository.save(option3);
+			
 			Question question6 = new Question(QuestionType.RADIOBUTTON, "Milloin Haaga-Helia aloitti toimintansa?", true,  newQuestionnaire3);
 			Question question7 = new Question(QuestionType.CHECKBOX, "Mikä on Haaga-Helian motto?", true,  newQuestionnaire3);
 			Question question8 = new Question(QuestionType.TEXT,"Mitä Haaga-Heliassa voi opiskella? (Anna vähitään kaksi eri koulutusvaihtoehtoa)", true,  newQuestionnaire3);
