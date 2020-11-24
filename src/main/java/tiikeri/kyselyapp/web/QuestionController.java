@@ -33,7 +33,8 @@ public class QuestionController {
 		return null;
 	}
 
-	@RequestMapping("/questionnairelist/{id}/newquestion")
+	
+	@RequestMapping("/questionnairelist/{id}/questionlist/newquestion")
 	public String addQuestion(@PathVariable("id") Long id, Model model) {
 		Question question = new Question();
 		
@@ -48,7 +49,7 @@ public class QuestionController {
 	@RequestMapping("/savequestion")
 	public String save(Question question) {
 		questionRepository.save(question);
-		return "redirect:/questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
+		return "redirect:/questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/questionlist";
 	}
 
 	// Delete question

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tiikeri.kyselyapp.domain.Question;
@@ -50,11 +51,14 @@ public class QuestionnaireController {
 		model.addAttribute("questionnaires", questionnaireRepository.findAll());
 		return "questionnairelist";
 	}
-
-	@GetMapping("/questionnairelist/{id}")
-	public String findById(@PathVariable("id") Long questionnaireId, Model model) {
-		model.addAttribute("questions", questionRepository.findAll());
-		return "questionnaire";
+	
+	@RequestMapping("/questionnairelist/{id}/questionlist")
+	public String listQuestions(@PathVariable("id") Long id, Model model) {
+		Questionnaire questionnaire = questionnaireRepository.findById(id).orElse(null);
+		model.addAttribute("questionnaire", questionnaire);
+		model.addAttribute("questions", questionRepository.findByQuestionnaire(questionnaire));
+		return "questionlist";
+		
 	}
 
 	@GetMapping("/newquestionnaire")

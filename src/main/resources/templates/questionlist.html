@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Questionlist</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<h1 th:text="${questionnaire.title}"></h1>
+
+	
+	<table class="table table-striped">
+		<tr>
+			<th>Questions</th>
+			<th>Type</th>
+			<th></th>
+		</tr>
+		<tr th:each="question : ${questions}">
+			<td th:text="${question.content}"></td>
+			<td th:text="${question.type}"></td>
+
+			<td><a
+				th:href="@{/deletequestion/{id}(id=${question.questionId})}"
+				class="btn btn-xs btn-danger">Delete</a></td>
+		</tr>
+	</table>
+
+		<a th:href="@{/questionnairelist/{id}/questionlist/newquestion(id=${questionnaire.questionnaireId})}" class="btn btn-primary">Add new question</a>
+	<a href="/questionnairelist" class="btn btn-primary">Back to
+		questionnaires</a>
+</body>
+</html>

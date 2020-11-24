@@ -24,8 +24,8 @@
 			<td th:text="${questionnaire.title}"></td>
 			<td th:text="${questionnaire.description}"></td>
 			<td><a
-				th:href="@{/questionnairelist/{id}/newquestion (id=${questionnaire.questionnaireId})}"
-				class="btn btn-primary">Add question</a></td>
+				th:href="@{/questionnairelist/{id}/questionlist (id=${questionnaire.questionnaireId})}"
+				class="btn btn-primary">Show questions</a></td>
 			<td><a
 				th:href="@{/deletequestionnaire/{id}(id=${questionnaire.questionnaireId})}"
 				class="btn btn-xs btn-danger">Delete</a></td>
