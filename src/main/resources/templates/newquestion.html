@@ -25,8 +25,13 @@
 					id="content" th:field="*{content}" />
 			</div>
 			<div>
-				<label for="type">Type: </label><input type="text" id="type"
-					th:field="*{type}" />
+				<label for="type">Type</label>
+				<select name="type">
+					<option
+						th:each="type : ${types}"
+						th:value="${type}" th:text="${type}"></option>
+
+				</select>
 			</div>
 
 			<!-- 			<label for="isRequired">Is this required?</label> -->

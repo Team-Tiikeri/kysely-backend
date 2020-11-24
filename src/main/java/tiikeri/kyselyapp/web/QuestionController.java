@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import tiikeri.kyselyapp.domain.Question;
 import tiikeri.kyselyapp.domain.QuestionRepository;
+import tiikeri.kyselyapp.domain.QuestionType;
 import tiikeri.kyselyapp.domain.Questionnaire;
 import tiikeri.kyselyapp.domain.QuestionnaireRepository;
 
@@ -35,10 +36,12 @@ public class QuestionController {
 	@RequestMapping("/questionnairelist/{id}/newquestion")
 	public String addQuestion(@PathVariable("id") Long id, Model model) {
 		Question question = new Question();
+		
 		Questionnaire questionnaire = questionnaireRepository.findById(id).orElse(null);
 		question.setQuestionnaire(questionnaire);
 		model.addAttribute("questions", questionRepository.findByQuestionnaire(questionnaire));
 		model.addAttribute("question", question);
+		model.addAttribute("types", QuestionType.values());
 		return "newquestion";
 	}
 
