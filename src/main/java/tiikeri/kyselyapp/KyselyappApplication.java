@@ -26,6 +26,7 @@ public class KyselyappApplication {
 
 	private static final Logger log = LoggerFactory.getLogger(KyselyappApplication.class);
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(KyselyappApplication.class, args);
 	}
@@ -35,18 +36,18 @@ public class KyselyappApplication {
 			QuestionnaireRepository questionnaireRepository, AnswerRepository answerRepository, OptionRepository optionRepository) {
 		return (args) -> {
 			
-			// Valmiiden kyselyiden luominen, joilla voidaan testailla toiminnallisuuksia
+			
+			// Test data for questionnaires
 			Questionnaire newQuestionnaire = new Questionnaire("Trivia", "kinkkinen kysely");
 			Questionnaire newQuestionnaire2 = new Questionnaire("Health", "Are you sick?");
 			Questionnaire newQuestionnaire3 = new Questionnaire("Haaga-Helia",
-					"Kysymyksiä liittyen Haaga-Helian ammattikorkeakouluun. Haluamme selvittää olemassa olevaa tietämystä Haaga-Heliasta ja oppia uusia näkökulmia.");
+			"Kysymyksiä liittyen Haaga-Helian ammattikorkeakouluun. Haluamme selvittää olemassa olevaa tietämystä Haaga-Heliasta ja oppia uusia näkökulmia.");
 			questionnaireRepository.save(newQuestionnaire);
 			questionnaireRepository.save(newQuestionnaire2);
 			questionnaireRepository.save(newQuestionnaire3);
 			
 		
-			
-			// Kysymyksien lisääminen itse kyselyihin
+			// Test data for questions
 			Question question1 = new Question(QuestionType.RADIOBUTTON, "What is the capital of France?", true, newQuestionnaire);
 			Question question2 = new Question(QuestionType.TEXT, "How long do bears hibernate?", true, newQuestionnaire);
 			Question question3 = new Question(QuestionType.TEXT, "Which country invented tea?", true, newQuestionnaire);
@@ -59,6 +60,7 @@ public class KyselyappApplication {
 			questionRepository.save(question4);
 			questionRepository.save(question5);
 			
+			//Test data for options in questions
 			Option option1 = new Option("kinkkukiusaus", question1);
 			Option option2 = new Option("makaronilaatikko", question1);
 			Option option3 = new Option("lasagne", question1);
@@ -67,6 +69,7 @@ public class KyselyappApplication {
 			optionRepository.save(option2);
 			optionRepository.save(option3);
 			
+			// Test data for questions
 			Question question6 = new Question(QuestionType.RADIOBUTTON, "Milloin Haaga-Helia aloitti toimintansa?", true,  newQuestionnaire3);
 			Question question7 = new Question(QuestionType.CHECKBOX, "Mikä on Haaga-Helian motto?", true,  newQuestionnaire3);
 			Question question8 = new Question(QuestionType.TEXT,"Mitä Haaga-Heliassa voi opiskella? (Anna vähitään kaksi eri koulutusvaihtoehtoa)", true,  newQuestionnaire3);
@@ -78,7 +81,8 @@ public class KyselyappApplication {
 			questionRepository.save(question9);
 			questionRepository.save(question10);
 
-			// Vastauksien lisäys luotuihin kysymyksiin
+			
+			// Test data for answers
 			Answer answer1 = new Answer("Paris", question1);
 			answerRepository.save(answer1);
 
@@ -93,7 +97,8 @@ public class KyselyappApplication {
 			Answer answer6 = new Answer("Teemu Kokko", question10);
 			answerRepository.save(answer6);
 
-			// Listaus kyselyiden kysymyksille
+			
+			// Listing questions in questionnaires
 			List<Question> questions1 = questionRepository.findByType(QuestionType.TEXT);
 			newQuestionnaire.setQuestions(questions1);
 
