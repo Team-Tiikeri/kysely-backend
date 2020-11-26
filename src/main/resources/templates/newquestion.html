@@ -21,8 +21,8 @@
 		<div>
 
 			<div>
-				<label for="content">Add question: </label><input type="text"
-					id="content" th:field="*{content}" />
+				<label for="content">Add question </label>
+				<input type="text" id="content" th:field="*{content}" />
 			</div>
 			<div>
 				<label for="type">Type</label>
@@ -33,6 +33,26 @@
 
 				</select>
 			</div>
+			<div id="options">
+				<ul>
+					<li></li>
+				</ul>
+			</div>
+			<div>
+				<button type="button" class="btn btn-primary" onClick="addOption()">Add new option</button>
+			</div>
+			<div id="fields">
+				
+			</div>
+			<div>
+				<button type="button" class="btn btn-primary"  onClick="sendOptions()">SEND option</button>
+			</div>
+			
+			
+<!-- 			<div> -->
+<!-- 				<label for="option">Add option</label> -->
+<!-- 				<input type="text" id="option" th:field="*{options}" /> -->
+<!-- 			</div> -->
 
 			<!-- 			<label for="isRequired">Is this required?</label> -->
 			<!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
@@ -47,5 +67,28 @@
 
 	<a href="/questionlist" class="btn btn-primary">Back to
 		questions</a>
+		
+	<script type="text/javascript">
+		function addOption() {
+			var input = document.createElement("input");
+			document.getElementById("fields").appendChild(input);
+			
+		};
+		
+		function sendOptions() {
+			
+			const fields = document.querySelectorAll('#fields');
+			const field = fields[0];
+			  console.log(fields);
+	
+			Array.from(field.inputs).forEach((input) => {
+			  console.log(input);
+			});
+			
+			
+		}
+	
+	
+	</script>
 </body>
 </html>
