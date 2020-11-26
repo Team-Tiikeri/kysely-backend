@@ -60,6 +60,13 @@ public class QuestionController {
 		questionRepository.deleteById(questionId);
 		return "redirect:../questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
 	}
+	
+	@GetMapping("/addoptions/{id}")
+	public String addOptions(@PathVariable("id") Long questionId, Model model) {
+		model.addAttribute("question", questionRepository.findById(questionId).orElse(null));
+		model.addAttribute("id", questionId);
+		return "addoptions";
+	}
 
 	// REST Endpoints
 

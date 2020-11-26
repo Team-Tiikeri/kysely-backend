@@ -41,26 +41,7 @@
               ></option>
             </select>
           </div>
-          <div id="options">
-            <ul>
-              <li></li>
-            </ul>
-          </div>
-          <div>
-            <button type="button" class="btn btn-primary" onClick="addOption()">
-              Add new option
-            </button>
-          </div>
-          <div id="fields"></div>
-          <div>
-            <button
-              type="button"
-              class="btn btn-primary"
-              onClick="sendOptions()"
-            >
-              SEND option
-            </button>
-          </div>
+          
 
           <!-- 			<div> -->
           <!-- 				<label for="option">Add option</label> -->
@@ -79,30 +60,6 @@
 
       <a href="/questionlist" class="btn btn-primary">Back to questions</a>
     </div>
-    <script type="text/javascript">
-      function addOption() {
-        const input = document.createElement("input")
-        input.id = "option"
-        document.getElementById("fields").appendChild(input)
-      }
-
-      function sendOptions() {
-        let json = []
-        const fields = document.querySelectorAll("#option")
-
-        Array.from(fields).forEach((input) => {
-          const optionObject = {
-            content: input.value,
-			// Need to insert questionId
-            question: {
-              questionId: 4,
-            },
-          }
-          json.push(optionObject)
-        })
-
-        console.log(json)
-      }
-    </script>
+    
   </body>
 </html>

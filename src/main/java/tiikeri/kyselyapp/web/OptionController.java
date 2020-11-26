@@ -41,6 +41,7 @@ public class OptionController {
 		return (List<Option>) optionRepository.findAll();
 	}
 	
+	
 	//method returns list of options for each question that has radiobutton/multiple choice
 	@PostMapping("/api/options")
 	public List<Option> saveOption(@RequestBody List<Option> options) {

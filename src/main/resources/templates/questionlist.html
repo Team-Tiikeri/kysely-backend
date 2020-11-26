@@ -23,7 +23,9 @@
 		<tr th:each="question : ${questions}">
 			<td th:text="${question.content}"></td>
 			<td th:text="${question.type}"></td>
-
+			<td><a
+				th:href="@{/addoptions/{id}(id=${question.questionId})}"
+				class="btn btn-primary">Add options</a></td>
 			<td><a
 				th:href="@{/deletequestion/{id}(id=${question.questionId})}"
 				class="btn btn-xs btn-danger">Delete</a></td>

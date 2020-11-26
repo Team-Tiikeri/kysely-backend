@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add a new question</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div class="container-fluid">
+		<h1 th:text="${question.content}"></h1>
+		<div>
+			<button type="button" class="btn btn-primary" onClick="addOption()">
+				Add new option</button>
+		</div>
+		<div id="fields"></div>
+		<div>
+			<button type="button" class="btn btn-primary" onClick="sendOptions()">
+				Send Options</button>
+		</div>
+	</div>
+
+
+
+	<script th:inline="javascript">
+      function addOption() {
+        const input = document.createElement("input")
+        input.id = "option"
+        document.getElementById("fields").appendChild(input)
+      }
+
+      function sendOptions() {
+        let json = []
+        const fields = document.querySelectorAll("#option")
+
+        Array.from(fields).forEach((input) => {
+          const optionObject = {
+            content: input.value,
+			// Need to insert questionId
+            question: {
+              questionId:/*[[${id}]]*/ null, 
+            },
+          }
+          json.push(optionObject)
+        })
+		fetch("../api/options", {
+			method: "POST",
+			headers:  { 
+				"Content-Type": "application/json" 
+				},
+			body: JSON.stringify(json)
+		})
+		const questionnaireId = /*[[${question.questionnaire.questionnaireId}]]*/
+        window.location.replace("/questionnairelist/" + questionnaireId + "/questionlist")
+        console.log(JSON.stringify(json))
+      }
+    </script>
+</body>
+</html>
