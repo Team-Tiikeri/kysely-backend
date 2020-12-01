@@ -58,7 +58,7 @@ public class QuestionController {
 		// Create a new question so that we can use questionnaireid in redirect
 		Question question = questionRepository.findById(questionId).orElse(null);
 		questionRepository.deleteById(questionId);
-		return "redirect:../questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/newquestion";
+		return "redirect:../questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/questionlist";
 	}
 	
 	@GetMapping("/addoptions/{id}")

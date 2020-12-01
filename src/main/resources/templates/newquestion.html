@@ -57,8 +57,8 @@
         </div>
         <input type="submit" class="btn btn-primary" value="Save Question" />
       </form>
-
-      <a href="/questionlist" class="btn btn-primary">Back to questions</a>
+	
+      <a th:href="@{|/questionnairelist/${question.questionnaire.questionnaireId}/questionlist/|}" class="btn btn-primary">Back to questions</a>
     </div>
     
   </body>

@@ -26,7 +26,7 @@
           <td th:text="${question.content}"></td>
           <td th:text="${question.type}"></td>
           <td>
-            <a
+            <a th:if="${question.type != T(tiikeri.kyselyapp.domain.QuestionType).TEXT}"
               th:href="@{/addoptions/{id}(id=${question.questionId})}"
               class="btn btn-primary"
               >Add options</a
