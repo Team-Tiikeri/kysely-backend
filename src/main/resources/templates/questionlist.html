@@ -18,13 +18,20 @@
       <table class="table table-striped">
         <tr>
           <th>Questions</th>
+          <th>Options</th>
           <th>Type</th>
           <th></th>
           <th></th>
+          
         </tr>
         <tr th:each="question : ${questions}">
           <td th:text="${question.content}"></td>
-          <td th:text="${question.type}"></td>
+          <td>
+          	<ul>
+          		<li th:each="option : ${question.options}" th:text="${option.content}"></li> 
+          	</ul>
+          </td>
+          <td th:text="${question.type}" ></td>
           <td>
             <a th:if="${question.type != T(tiikeri.kyselyapp.domain.QuestionType).TEXT}"
               th:href="@{/addoptions/{id}(id=${question.questionId})}"
