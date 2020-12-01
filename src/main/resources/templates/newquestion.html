@@ -1,65 +1,54 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Add a new question</title>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <h1 th:text="${question.questionnaire.title}"></h1>
+<head>
+<title>Add a new question</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div class="container">
+		<h1 th:text="${question.questionnaire.title}"></h1>
 
-      <form
-        th:object="${question}"
-        th:action="@{/savequestion}"
-        action="#"
-        method="post"
-      >
-        <input
-          type="hidden"
-          th:field="${question.questionnaire.questionnaireId}"
-          class="form-control"
-        />
-        <div>
-          <div>
-            <label for="content">Add question </label>
-            <input type="text" id="content" th:field="*{content}" />
-          </div>
-          <div>
-            <label for="type">Type</label>
-            <select name="type">
-              <option
-                th:each="type : ${types}"
-                th:value="${type}"
-                th:text="${type}"
-              ></option>
-            </select>
-          </div>
-          
+		<form th:object="${question}" th:action="@{/savequestion}" action="#"
+			method="post">
+			<input type="hidden"
+				th:field="${question.questionnaire.questionnaireId}"
+				class="form-control" />
+			<div>
+				<div>
+					<label for="content">Add question </label> <input type="text"
+						id="content" th:field="*{content}" />
+				</div>
+				<div>
+					<label for="type">Type</label> <select name="type">
+						<option th:each="type : ${types}" th:value="${type}"
+							th:text="${type}"></option>
+					</select>
+				</div>
 
-          <!-- 			<div> -->
-          <!-- 				<label for="option">Add option</label> -->
-          <!-- 				<input type="text" id="option" th:field="*{options}" /> -->
-          <!-- 			</div> -->
 
-          <!-- 			<label for="isRequired">Is this required?</label> -->
-          <!-- 			<label>	<input type="radio" name="isRequired" id="isRequired1" value="true" -->
-          <!-- 					th:checked="*{isRequired}"/>Yes</label> -->
+				<div>
+					<label for="option">Add option</label> <input type="text"
+						id="option" th:field="*{options}" />
+				</div>
 
-          <!-- 				<label><input type="radio" name="isRequired" id="isRequired2" value="false" -->
-          <!-- 					th:checked="*{isRequired} == false"/>No</label> -->
-        </div>
-        <input type="submit" class="btn btn-primary" value="Save Question" />
-      </form>
-	
-      <a th:href="@{|/questionnairelist/${question.questionnaire.questionnaireId}/questionlist/|}" class="btn btn-primary">Back to questions</a>
-    </div>
-    
-  </body>
+				<label for="isRequired">Is this required?</label> <label> <input
+					type="radio" name="isRequired" id="isRequired1" value="true"
+					th:checked="*{isRequired}" />Yes
+				</label> <label><input type="radio" name="isRequired"
+					id="isRequired2" value="false" th:checked="*{isRequired} == false" />No</label>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Save Question" />
+		</form>
+
+		<a
+			th:href="@{|/questionnairelist/${question.questionnaire.questionnaireId}/questionlist/|}"
+			class="btn btn-primary">Back to questions</a>
+	</div>
+
+</body>
 </html>
