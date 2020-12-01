@@ -30,18 +30,21 @@ public class OptionController {
 	@Autowired
 	private OptionRepository optionRepository;
 	
+	//list all options by question
 	@GetMapping("/api/questions/{id}/options")
 	public  @ResponseBody List<Option> findOptionsByQuestion(@PathVariable("id") Long questionId){
 		Question question = questionRepository.findById(questionId).orElse(null);
 		return (List<Option>) optionRepository.findByQuestion(question);
 	}
 	
+	//list all options
 	@GetMapping("/api/options")
 	public @ResponseBody List<Option> findAllOptions(){
 		return (List<Option>) optionRepository.findAll();
 	}
 	
 	
+	//save guestion
 	//method returns list of options for each question that has radiobutton/multiple choice
 	@PostMapping("/api/options")
 	public List<Option> saveOption(@RequestBody List<Option> options) {

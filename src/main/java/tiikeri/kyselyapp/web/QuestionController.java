@@ -27,13 +27,14 @@ public class QuestionController {
 	@Autowired
 	private QuestionnaireRepository questionnaireRepository;
 
+	//find question by id
 	@GetMapping("/question/{id}")
 	public String findById(@PathVariable("id") Long questionnaireId, Model model) {
 		model.addAttribute("question", questionRepository.findById(questionnaireId));
 		return null;
 	}
 
-	
+	//opens new question form
 	@RequestMapping("/questionnairelist/{id}/questionlist/newquestion")
 	public String addQuestion(@PathVariable("id") Long id, Model model) {
 		Question question = new Question();
@@ -46,6 +47,7 @@ public class QuestionController {
 		return "newquestion";
 	}
 
+	//save new question
 	@RequestMapping("/savequestion")
 	public String save(Question question) {
 		questionRepository.save(question);
@@ -61,6 +63,7 @@ public class QuestionController {
 		return "redirect:../questionnairelist/" + question.getQuestionnaire().getQuestionnaireId() + "/questionlist";
 	}
 	
+	//opens new options form
 	@GetMapping("/addoptions/{id}")
 	public String addOptions(@PathVariable("id") Long questionId, Model model) {
 		model.addAttribute("question", questionRepository.findById(questionId).orElse(null));

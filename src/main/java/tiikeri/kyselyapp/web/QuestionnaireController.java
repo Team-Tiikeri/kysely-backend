@@ -45,13 +45,15 @@ public class QuestionnaireController {
 		Questionnaire questionnaire = questionnaireRepository.findById(questionnaireId).orElse(null);
 		return questionRepository.findByQuestionnaire(questionnaire);
 	}
-
-	@GetMapping("/questionnairelist")
+	
+	//lists all questionnaires
+	@RequestMapping(value = { "/", "/questionnairelist" })
 	public String indexPage(Model model) {
 		model.addAttribute("questionnaires", questionnaireRepository.findAll());
 		return "questionnairelist";
 	}
 	
+	//lists all questions by questionnaire
 	@RequestMapping("/questionnairelist/{id}/questionlist")
 	public String listQuestions(@PathVariable("id") Long id, Model model) {
 		Questionnaire questionnaire = questionnaireRepository.findById(id).orElse(null);
@@ -61,12 +63,14 @@ public class QuestionnaireController {
 		
 	}
 
+	//opens new questionnaire form
 	@GetMapping("/newquestionnaire")
 	public String newQuestionnaire(Model model) {
 		model.addAttribute("questionnaire", new Questionnaire());
 		return "newquestionnaire";
 	}
 
+	//save questionnaire
 	@PostMapping("/save")
 	public String saveQuestionnaire(Questionnaire questionnaire) {
 		questionnaireRepository.save(questionnaire);
