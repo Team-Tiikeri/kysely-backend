@@ -1,52 +1,39 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Questionnaire List</title>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="container">
-    <h1>Haaga-Helia questionnaires</h1> 	
-      <table class="table table-striped">
-        <tr>
-          <th class="d-none">ID</th>
-          <th>Questionnaires</th>
-          <th>Description</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr th:each="questionnaire : ${questionnaires}">
-          <td class="d-none" th:text="${questionnaire.questionnaireId}"></td>
-          <td th:text="${questionnaire.title}"></td>
-          <td th:text="${questionnaire.description}"></td>
-          <td>
-            <a
-              th:href="@{/questionnairelist/{id}/questionlist (id=${questionnaire.questionnaireId})}"
-              class="btn btn-primary"
-              >Show questions</a
-            >
-          </td>
-          <td>
-            <a
-              th:href="@{/deletequestionnaire/{id}(id=${questionnaire.questionnaireId})}"
-              class="btn btn-xs btn-danger"
-              >Delete</a
-            >
-          </td>
-          <td><a class="btn btn-primary">Edit</a></td>
-        </tr>
-      </table>
-      <a th:href="@{./newquestionnaire}" class="btn btn-success"
-        >Add questionnaire</a
-      >
-    </div>
-  </body>
+<head>
+<title>Questionnaire List</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div class="container">
+		<h1>Haaga-Helia questionnaires</h1>
+		<table class="table table-striped">
+			<tr>
+				<th class="d-none">ID</th>
+				<th>Questionnaires</th>
+				<th>Description</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr th:each="questionnaire : ${questionnaires}">
+				<td class="d-none" th:text="${questionnaire.questionnaireId}"></td>
+				<td th:text="${questionnaire.title}"></td>
+				<td th:text="${questionnaire.description}"></td>
+				<td><a
+					th:href="@{/questionnairelist/{id}/questionlist (id=${questionnaire.questionnaireId})}"
+					class="btn btn-primary">Show questions</a></td>
+				<td><a
+					th:href="@{/deletequestionnaire/{id}(id=${questionnaire.questionnaireId})}"
+					class="btn btn-xs btn-danger">Delete</a></td>
+			</tr>
+		</table>
+		<a th:href="@{./newquestionnaire}" class="btn btn-success">Add
+			questionnaire</a>
+	</div>
+</body>
 </html>
