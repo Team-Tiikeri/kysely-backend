@@ -80,4 +80,175 @@
 		</code>
 	</pre>
 
+	<h2>All answers</h2>
+	<p>
+		<strong>GET </strong><strong> api/answers </strong> <strong>
+			<a href="api/answers">api/answers</a>
+		</strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre>
+		<code>
+[
+	{
+		answerId: 9,
+		content: "Paris",
+		question: {
+			questionId: 4,
+			type: "RADIOBUTTON",
+			content: "What is the capital of France?",
+			isRequired: true,
+			questionnaire: {
+				questionnaireId: 1,
+				title: "Trivia",
+				description: "kinkkinen kysely"
+			},
+			options: []
+		}
+	},
+	{
+	answerId: 21,
+	content: "Haaga-Helia, Reilusti luonnetta!",
+	question: {
+		questionId: 14,
+		type: "RADIOBUTTON",
+		content: "Mikä on Haaga-Helian motto?",
+		isRequired: true,
+			questionnaire: {
+				questionnaireId: 3,
+				title: "Haaga-Helia",
+				description: "Kysymyksiä liittyen Haaga-Helian ammattikorkeakouluun. Haluamme selvittää olemassa olevaa tietämystä Haaga-Heliasta ja oppia uusia näkökulmia."
+			},
+			options: []
+		}
+	}
+]
+		</code>
+	</pre>
+
+	<h2>All answers</h2>
+	<p>
+		<strong>GET </strong><strong> api/answers </strong> <strong>
+			<a href="api/answers">api/answers</a>
+		</strong>
+	<h2>Answers by question</h2>
+	<strong>GET </strong>
+	<strong>api/questions/{id}/answers</strong>
+	<strong> <a href="api/questions/4/answers">api/questions/4/answers</a>
+	</strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre>
+		<code>
+[
+	{
+		answerId: 9,
+		content: "Paris",
+		question: {
+			questionId: 4,
+			type: "RADIOBUTTON",
+			content: "What is the capital of France?",
+			isRequired: true,
+			questionnaire: {
+				questionnaireId: 1,
+				title: "Trivia",
+				description: "kinkkinen kysely"
+			},
+			options: []
+		}
+	},
+	{
+	answerId: 21,
+	content: "Haaga-Helia, Reilusti luonnetta!",
+	question: {
+		questionId: 14,
+		type: "RADIOBUTTON",
+		content: "Mikä on Haaga-Helian motto?",
+		isRequired: true,
+			questionnaire: {
+				questionnaireId: 3,
+				title: "Haaga-Helia",
+				description: "Kysymyksiä liittyen Haaga-Helian ammattikorkeakouluun. Haluamme selvittää olemassa olevaa tietämystä Haaga-Heliasta ja oppia uusia näkökulmia."
+			},
+			options: []
+		}
+	}
+]
+		</code>
+	</pre>
+	<h2>All options</h2>
+	<p>
+		<strong>GET </strong><strong> api/options </strong> <strong>
+			<a href="api/options">api/options</a>
+		</strong>
+	<h2>Options by question</h2>
+	<strong>GET </strong>
+	<strong>api/questions/{id}/options</strong>
+	<strong> <a href="api/questions/4/options">api/questions/4/options</a>
+	</strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre>
+		<code>
+{
+	question: {
+		questionId: 4,
+		type: "RADIOBUTTON",
+		content: "What is the capital of France?",
+		isRequired: true,
+		questionnaire: {
+			questionnaireId: 1,
+			title: "Trivia",
+			description: "kinkkinen kysely"
+		},
+		answers: [
+			{
+				answerId: 9,
+				content: "Paris"
+			}
+		],
+			options: [
+				{
+					optionId: 10,
+					content: "kinkkukiusaus"
+				},
+			{
+				optionId: 11,
+				content: "makaronilaatikko"
+			},
+			{
+				optionId: 12,
+				content: "lasagne"
+			}
+		]
+	}
+}
+		</code>
+	</pre>
+<h2>Adding answers to questions</h2>
+	<p>
+		<strong>Method:</strong> POST <strong>Endpoint:</strong> <strong><a
+			href="api/answers">api/answers</a></strong>
+			(Test with Postman)
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre>
+		<code>
+{
+	content: "Haaga-Helia, Reilusti luonnetta!",
+	question: {
+		questionId: 14
+	}
+}
+</code>
+	</pre>
+	
 </body>
