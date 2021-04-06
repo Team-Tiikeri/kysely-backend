@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+    kysely-frontend:
+        build: ./kysely-frontend/
+        ports:
+            - 3000:3000
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        volumes:
+            - ./kysely-frontend:/usr/src/app
+            - node_modules:/usr/src/app/node_modules
+        container_name: kysely-frontend
+    
+    kysely-backend:
+        #command: cd kysely-backend
+        build: ./kysely-backend/
+        ports: 
+            - 8080:8080
+        container_name: kysely-backend
+    
+volumes:
+    node_modules:
